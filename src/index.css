@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@theme {
+  /* COLORS - Vintage Document Style */
+  --color-beige: #f5e6c8;
+  --color-brown: #6b4f3a;
+  --color-red-muted: #a63d40;
+  --color-bone: #fffdf5;
+  --color-paper: #f2efe9;
+  --color-ink: #000000;
+  --color-crimson: #a63d40;
+  --color-gold: #ffd700;
+  --color-charcoal: #1a1a1a;
+  --color-graphite: #333333;
+  --color-cream: #fbf3e0;
+
+  /* SHADOWS (Hard Shadows) */
+  --shadow-hard-sm: 2px 2px 0px 0px var(--color-ink);
+  --shadow-hard: 4px 4px 0px 0px var(--color-ink);
+  --shadow-hard-md: 6px 6px 0px 0px var(--color-ink);
+  --shadow-hard-lg: 8px 8px 0px 0px var(--color-ink);
+
+  /* ANIMATIONS */
+  --animate-spin-slow: spin 12s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+/* BASE STYLES */
+:root {
+  /* Typography - Vintage Document Style */
+  --font-display: "Playfair Display", "Merriweather", "Cinzel", serif;
+  --font-body: "Inter", "Be Vietnam Pro", "Roboto", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  --color-bg-default: var(--color-beige);
+  --color-text-default: var(--color-brown);
+
+  font-family: var(--font-body);
+  background-color: var(--color-bg-default);
+  color: var(--color-text-default);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-size: clamp(16px, 1vw + 12px, 18px);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* TYPOGRAPHY UTILS */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* UTILITIES */
+.snap-container {
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+.snap-section {
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.snap-section-scrollable {
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  position: relative;
+  overflow-y: auto;
+  display: block;
+}
+
+/* GLOBAL SCROLLBAR */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-beige);
+  border-left: 2px solid var(--color-brown);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brown);
+  border: 2px solid var(--color-beige);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-red-muted);
+}
+
+/* ANIMATION UTILITIES */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease-out;
+}
+
+/* Page transition overlay */
+@keyframes pageWipe {
+  from {
+    transform: scaleY(1);
+  }
+
+  to {
+    transform: scaleY(0);
+  }
+}
