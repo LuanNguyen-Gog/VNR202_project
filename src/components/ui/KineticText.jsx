@@ -44,7 +44,7 @@ export const MarqueeStrip = ({
 }) => {
   return (
     <div
-      className={`overflow-hidden whitespace-nowrap py-3 border-y-2 border-ink ${tone === "dark" ? "bg-ink text-bone" : "bg-gold text-ink"} ${className}`}
+      className={`overflow-hidden whitespace-nowrap py-3 rounded-xl border-y-2 border-ink ${tone === "dark" ? "bg-ink text-bone" : "bg-gold text-ink"} ${className}`}
     >
       <motion.div
         className="inline-block"

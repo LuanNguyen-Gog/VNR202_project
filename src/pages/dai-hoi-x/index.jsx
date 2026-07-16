@@ -115,7 +115,7 @@ const DaiHoiXPage = () => {
       <Section className="items-center justify-center pt-32 pb-20 border-b border-brown/20 bg-beige min-h-screen">
         <div className="max-w-screen-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-5 gap-12 items-center z-10 relative">
           <div className="space-y-6 lg:col-span-3">
-            <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 bg-brown text-beige border border-brown">
+            <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full bg-brown text-beige border border-brown">
               <span className="w-2 h-2 bg-current rounded-full animate-pulse"></span>
               <span className="font-mono text-xs uppercase tracking-widest">
                 Phần c • Hà Nội, 18-25/4/2006
@@ -149,7 +149,7 @@ const DaiHoiXPage = () => {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + i * 0.1 }}
-                  className="bg-white border border-brown p-4 text-center hover:shadow-hard-sm transition-shadow"
+                  className="bg-white border border-brown rounded-xl p-4 text-center hover:shadow-hard-sm transition-shadow"
                 >
                   <div className="font-display font-bold text-2xl md:text-3xl text-red-muted">
                     {s.num}
@@ -205,7 +205,7 @@ const DaiHoiXPage = () => {
               initial={{ opacity: 0, y: -16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-block bg-brown border border-brown px-6 py-2 transform rotate-1 shadow-sm"
+              className="inline-block bg-brown border border-brown rounded-xl px-6 py-2 transform rotate-1 shadow-sm"
             >
               <span className="font-mono font-bold uppercase tracking-widest text-sm text-beige">
                 Tổng kết 20 năm đổi mới
@@ -270,7 +270,7 @@ const DaiHoiXPage = () => {
               variant="flat"
               className="p-8 md:p-10 bg-white border-2 border-brown shadow-hard-md flex flex-col"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 border border-red-muted text-red-muted font-mono text-xs uppercase tracking-widest w-max mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-red-muted text-red-muted font-mono text-xs uppercase tracking-widest w-max mb-6">
                 Bổ sung 2 đặc trưng mới của CNXH
               </div>
               <blockquote className="font-body text-lg text-brown leading-relaxed italic mb-6">
@@ -294,7 +294,7 @@ const DaiHoiXPage = () => {
                 className="p-8 bg-white border-2 border-brown shadow-hard flex-1"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-red-muted/10 flex items-center justify-center border border-red-muted shrink-0">
+                  <div className="w-14 h-14 bg-red-muted/10 flex items-center justify-center border border-red-muted rounded-xl shrink-0">
                     <Users className="text-red-muted" size={26} />
                   </div>
                   <div>
@@ -317,7 +317,7 @@ const DaiHoiXPage = () => {
                 className="p-8 bg-white border-2 border-brown shadow-hard flex-1"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-red-muted/10 flex items-center justify-center border border-red-muted shrink-0">
+                  <div className="w-14 h-14 bg-red-muted/10 flex items-center justify-center border border-red-muted rounded-xl shrink-0">
                     <HeartHandshake className="text-red-muted" size={26} />
                   </div>
                   <div>
@@ -340,7 +340,7 @@ const DaiHoiXPage = () => {
                 className="p-8 bg-white border-2 border-brown shadow-hard flex-1"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-red-muted/10 flex items-center justify-center border border-red-muted shrink-0">
+                  <div className="w-14 h-14 bg-red-muted/10 flex items-center justify-center border border-red-muted rounded-xl shrink-0">
                     <TrendingUp className="text-red-muted" size={26} />
                   </div>
                   <div>
@@ -423,7 +423,7 @@ const DaiHoiXPage = () => {
       >
         <div className="max-w-screen-2xl mx-auto w-full py-16 pt-28">
           <div className="text-center mb-14 space-y-4">
-            <div className="w-16 h-16 bg-red-muted mx-auto flex items-center justify-center border border-beige">
+            <div className="w-16 h-16 bg-red-muted mx-auto flex items-center justify-center border border-beige rounded-2xl">
               <Globe2 className="w-8 h-8 text-beige" strokeWidth={2.5} />
             </div>
             <h2 className="text-3xl md:text-5xl font-display font-bold uppercase">
@@ -462,7 +462,7 @@ const DaiHoiXPage = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-beige/10 border-2 border-beige/30 p-6 text-center hover:border-gold transition-colors"
+                className="bg-beige/10 border-2 border-beige/30 rounded-2xl p-6 text-center hover:border-gold transition-colors"
               >
                 <div className="font-display font-bold text-3xl md:text-4xl text-gold mb-3">
                   {s.num}
@@ -473,7 +473,7 @@ const DaiHoiXPage = () => {
           </div>
 
           <div className="mt-12 grid lg:grid-cols-2 gap-6">
-            <div className="bg-beige/5 border border-beige/20 p-6">
+            <div className="bg-beige/5 border border-beige/20 rounded-2xl p-6">
               <h3 className="font-display text-xl font-bold text-gold mb-3 uppercase">
                 Đối ngoại 2006 - 2010
               </h3>
@@ -484,7 +484,7 @@ const DaiHoiXPage = () => {
                 toàn diện với Campuchia; kiều hối đạt 8 tỷ USD năm 2010.
               </p>
             </div>
-            <div className="bg-beige/5 border border-beige/20 p-6">
+            <div className="bg-beige/5 border border-beige/20 rounded-2xl p-6">
               <h3 className="font-display text-xl font-bold text-gold mb-3 uppercase">
                 Ngoại giao văn hóa
               </h3>

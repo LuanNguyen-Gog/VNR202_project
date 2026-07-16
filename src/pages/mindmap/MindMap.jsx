@@ -52,13 +52,13 @@ const flatten = (node, acc = []) => {
 const nodeStyles = (depth) => {
   switch (depth) {
     case 0:
-      return "bg-brown text-beige border-2 border-ink shadow-hard font-display font-bold text-base md:text-lg";
+      return "bg-brown text-beige border-2 border-ink shadow-hard rounded-2xl font-display font-bold text-base md:text-lg";
     case 1:
-      return "bg-red-muted text-white border-2 border-ink shadow-hard font-display font-bold text-base";
+      return "bg-red-muted text-white border-2 border-ink shadow-hard rounded-2xl font-display font-bold text-base";
     case 2:
-      return "bg-gold/90 text-ink border-2 border-ink shadow-hard-sm font-bold text-sm";
+      return "bg-gold/90 text-ink border-2 border-ink shadow-hard-sm rounded-xl font-bold text-sm";
     default:
-      return "bg-white text-brown border border-brown shadow-sm text-sm";
+      return "bg-white text-brown border border-brown shadow-sm rounded-xl text-sm";
   }
 };
 
@@ -86,7 +86,7 @@ const MindMap = () => {
   const PAD = 24;
 
   return (
-    <div className="w-full overflow-auto border-2 border-brown bg-paper shadow-hard-md">
+    <div className="w-full overflow-auto border-2 border-brown bg-paper shadow-hard-md rounded-2xl">
       <div
         className="relative"
         style={{ width: width + PAD * 2, height: height + PAD * 2 }}
@@ -146,7 +146,7 @@ const MindMap = () => {
             <span className="line-clamp-3">{n.label}</span>
             {n.hasChildren && (
               <span
-                className={`absolute -right-2.5 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center text-[11px] font-mono font-bold border border-ink ${
+                className={`absolute -right-2.5 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center text-[11px] font-mono font-bold border border-ink rounded-full ${
                   n.isCollapsed ? "bg-gold text-ink" : "bg-white text-brown"
                 }`}
               >

@@ -147,7 +147,7 @@ const DaiHoiXIPage = () => {
       <Section className="items-center justify-center pt-32 pb-20 border-b border-brown/20 bg-beige min-h-screen">
         <div className="max-w-screen-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-5 gap-12 items-center z-10 relative">
           <div className="space-y-6 lg:col-span-3">
-            <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 bg-brown text-beige border border-brown">
+            <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full bg-brown text-beige border border-brown">
               <span className="w-2 h-2 bg-current rounded-full animate-pulse"></span>
               <span className="font-mono text-xs uppercase tracking-widest">
                 Phần d • Hà Nội, 12-19/1/2011
@@ -182,7 +182,7 @@ const DaiHoiXIPage = () => {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + i * 0.1 }}
-                  className="bg-white border border-brown p-4 text-center hover:shadow-hard-sm transition-shadow"
+                  className="bg-white border border-brown rounded-xl p-4 text-center hover:shadow-hard-sm transition-shadow"
                 >
                   <div className="font-display font-bold text-2xl md:text-3xl text-red-muted">
                     {s.num}
@@ -240,7 +240,7 @@ const DaiHoiXIPage = () => {
               initial={{ opacity: 0, y: -16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-block bg-brown border border-brown px-6 py-2 transform -rotate-1 shadow-sm"
+              className="inline-block bg-brown border border-brown rounded-xl px-6 py-2 transform -rotate-1 shadow-sm"
             >
               <span className="font-mono font-bold uppercase tracking-widest text-sm text-beige">
                 Cương lĩnh 2011
@@ -312,7 +312,7 @@ const DaiHoiXIPage = () => {
                   hoverEffect
                   className="p-6 bg-white border-t-4 border-t-red-muted h-full flex flex-col items-start gap-4"
                 >
-                  <div className="w-12 h-12 bg-red-muted/10 flex items-center justify-center border border-red-muted">
+                  <div className="w-12 h-12 bg-red-muted/10 flex items-center justify-center border border-red-muted rounded-xl">
                     <p.icon className="text-red-muted" size={22} />
                   </div>
                   <p className="text-brown/90 font-body text-sm font-medium">
@@ -345,7 +345,7 @@ const DaiHoiXIPage = () => {
                 "Giữa Đảng lãnh đạo, Nhà nước quản lý, nhân dân làm chủ",
               ].map((m, i) => (
                 <div key={i} className="flex gap-3 items-start py-1">
-                  <span className="w-2 h-2 bg-red-muted mt-2.5 shrink-0"></span>
+                  <span className="w-2 h-2 bg-red-muted rounded-full mt-2.5 shrink-0"></span>
                   <span>{m}</span>
                 </div>
               ))}
@@ -380,7 +380,7 @@ const DaiHoiXIPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.12 }}
-                className="bg-beige/10 border-2 border-beige/30 p-8 hover:border-gold transition-colors flex flex-col"
+                className="bg-beige/10 border-2 border-beige/30 rounded-2xl p-8 hover:border-gold transition-colors flex flex-col"
               >
                 <div className="font-display font-bold text-5xl text-gold mb-4">
                   {d.num}
@@ -393,7 +393,7 @@ const DaiHoiXIPage = () => {
             ))}
           </div>
 
-          <div className="mt-12 bg-beige/5 border border-beige/20 p-6 text-center">
+          <div className="mt-12 bg-beige/5 border border-beige/20 rounded-2xl p-6 text-center">
             <p className="font-body text-beige/80">
               Kết quả 5 năm 2011-2016: tiềm lực kinh tế tăng lên, kinh tế vĩ
               mô cơ bản ổn định, kiểm soát được lạm phát —{" "}

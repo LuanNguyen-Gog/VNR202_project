@@ -23,7 +23,7 @@ const MindmapPage = () => {
               initial={{ opacity: 0, y: -16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-block bg-brown border border-brown px-6 py-2 transform rotate-1 shadow-sm"
+              className="inline-block bg-brown border border-brown rounded-xl px-6 py-2 transform rotate-1 shadow-sm"
             >
               <span className="font-mono font-bold uppercase tracking-widest text-sm text-beige inline-flex items-center gap-2">
                 <Network size={16} /> Tổng kết nội dung
@@ -58,7 +58,7 @@ const MindmapPage = () => {
         ></div>
 
         <div className="max-w-5xl mx-auto text-center relative z-10 space-y-10">
-          <div className="w-16 h-16 bg-red-muted mx-auto flex items-center justify-center border border-beige">
+          <div className="w-16 h-16 bg-red-muted mx-auto flex items-center justify-center border border-beige rounded-2xl">
             <Quote className="w-8 h-8 text-beige" strokeWidth={3} />
           </div>
 
@@ -87,7 +87,7 @@ const MindmapPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12 }}
-                className="bg-beige/10 border-2 border-beige/30 p-6 hover:border-gold transition-colors"
+                className="bg-beige/10 border-2 border-beige/30 rounded-2xl p-6 hover:border-gold transition-colors"
               >
                 <h3 className="font-display text-xl font-bold text-gold mb-3 uppercase">
                   {c.title}

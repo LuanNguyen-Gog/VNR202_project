@@ -10,7 +10,7 @@ const Button = ({
   ...props
 }) => {
   const baseStyles =
-    "inline-flex items-center justify-center font-bold uppercase tracking-wider border border-brown transition-all duration-75 select-none disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
+    "inline-flex items-center justify-center font-bold uppercase tracking-wider border border-brown rounded-lg transition-all duration-75 select-none disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
 
   const variants = {
     primary:

@@ -7,7 +7,8 @@ const Card = ({
   hoverEffect = false,
   ...props
 }) => {
-  const baseStyles = "border border-brown/20 overflow-hidden p-6 relative";
+  const baseStyles =
+    "border border-brown/20 overflow-hidden p-6 relative rounded-2xl";
 
   const variants = {
     default: "bg-beige shadow-sm",

@@ -113,15 +113,15 @@ const PageShell = ({ children, prev, next, prevLabel, nextLabel }) => {
             exit={{ opacity: 0, y: 24 }}
             className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none"
           >
-            <div className="bg-brown text-beige border-2 border-ink shadow-hard px-6 py-3 flex flex-col items-center gap-1 min-w-72">
+            <div className="bg-brown text-beige border-2 border-ink shadow-hard rounded-xl px-6 py-3 flex flex-col items-center gap-1 min-w-72">
               <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest">
                 <ChevronDown size={16} className="animate-bounce" />
                 Cuộn tiếp để sang: {nextLabel || "Trang tiếp theo"}
                 <ChevronDown size={16} className="animate-bounce" />
               </div>
-              <div className="w-full h-1.5 bg-beige/20 overflow-hidden">
+              <div className="w-full h-1.5 bg-beige/20 overflow-hidden rounded-full">
                 <div
-                  className="h-full bg-gold transition-[width] duration-75"
+                  className="h-full bg-gold transition-[width] duration-75 rounded-full"
                   style={{ width: `${Math.round(progress * 100)}%` }}
                 />
               </div>
@@ -135,15 +135,15 @@ const PageShell = ({ children, prev, next, prevLabel, nextLabel }) => {
             exit={{ opacity: 0, y: -24 }}
             className="fixed top-24 left-1/2 -translate-x-1/2 z-50 pointer-events-none"
           >
-            <div className="bg-brown text-beige border-2 border-ink shadow-hard px-6 py-3 flex flex-col items-center gap-1 min-w-72">
+            <div className="bg-brown text-beige border-2 border-ink shadow-hard rounded-xl px-6 py-3 flex flex-col items-center gap-1 min-w-72">
               <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest">
                 <ChevronUp size={16} className="animate-bounce" />
                 Cuộn lên để về: {prevLabel || "Trang trước"}
                 <ChevronUp size={16} className="animate-bounce" />
               </div>
-              <div className="w-full h-1.5 bg-beige/20 overflow-hidden">
+              <div className="w-full h-1.5 bg-beige/20 overflow-hidden rounded-full">
                 <div
-                  className="h-full bg-gold transition-[width] duration-75"
+                  className="h-full bg-gold transition-[width] duration-75 rounded-full"
                   style={{ width: `${Math.round(-progress * 100)}%` }}
                 />
               </div>

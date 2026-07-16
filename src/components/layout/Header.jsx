@@ -62,7 +62,7 @@ export default function Header() {
           {/* Logo / Brand */}
           <div
             onClick={() => handleNavigate("/")}
-            className="font-display text-3xl text-brown cursor-pointer select-none hover:translate-x-1 transition-transform tracking-tight leading-none uppercase border-2 border-transparent hover:border-brown hover:bg-red-muted/20 p-1"
+            className="font-display text-3xl text-brown cursor-pointer select-none hover:translate-x-1 transition-transform tracking-tight leading-none uppercase border-2 border-transparent hover:border-brown hover:bg-red-muted/20 rounded-lg p-1"
           >
             VNR<span className="text-red-muted">202</span>
             <span className="hidden md:inline-block ml-3 text-xs font-mono tracking-widest text-brown/60 border-l-2 border-brown/20 pl-3">
