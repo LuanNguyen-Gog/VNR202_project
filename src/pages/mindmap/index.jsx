@@ -1,14 +1,17 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Network, MousePointerClick, Quote } from "lucide-react";
 import PageShell from "../../components/layout/PageShell";
 import Section from "../../components/layout/Section";
-import Card from "../../components/ui/Card";
 import { KineticSubline, MarqueeStrip } from "../../components/ui/KineticText";
 import { getNeighbors } from "../../config/pages";
 import MindMap from "./MindMap";
+import { mindmaps } from "./mindmapData";
 
 const MindmapPage = () => {
   const neighbors = getNeighbors("/mindmap");
+  const [activeId, setActiveId] = useState(mindmaps[0].id);
+  const active = mindmaps.find((m) => m.id === activeId);
 
   return (
     <PageShell {...neighbors}>
@@ -33,16 +36,40 @@ const MindmapPage = () => {
               Mindmap <span className="text-red-muted">Đại hội X & XI</span>
             </h2>
             <KineticSubline className="text-center max-w-3xl mx-auto text-brown">
-              Toàn bộ nội dung 3.2.2 (phần c & d) được tóm tắt trong sơ đồ tư
-              duy dưới đây.
+              Nội dung 3.2.2 (phần c & d) được tách thành 3 sơ đồ nhỏ cho dễ
+              theo dõi — chọn tab bên dưới.
             </KineticSubline>
+          </div>
+
+          {/* Tab chuyển giữa các mindmap */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+            {mindmaps.map((m) => (
+              <button
+                key={m.id}
+                onClick={() => setActiveId(m.id)}
+                className={`px-5 py-2 rounded-full border-2 font-mono font-bold text-xs md:text-sm uppercase tracking-widest transition-all ${
+                  m.id === activeId
+                    ? "bg-red-muted text-white border-ink shadow-hard-sm -translate-y-0.5"
+                    : "bg-paper text-brown border-brown/40 hover:border-brown hover:-translate-y-0.5"
+                }`}
+              >
+                {m.tab}
+              </button>
+            ))}
+          </div>
+
+          <div className="text-center mb-4 space-y-1">
+            <h3 className="font-display text-xl md:text-2xl font-bold text-brown">
+              {active.title}
+            </h3>
+            <p className="text-brown/60 font-body text-sm italic">{active.hint}</p>
             <p className="inline-flex items-center gap-2 text-brown/60 font-mono text-xs uppercase tracking-widest">
               <MousePointerClick size={14} />
-              Bấm vào các nhánh để thu gọn / mở rộng — kéo ngang để xem toàn bộ
+              Bấm vào các nhánh để thu gọn / mở rộng — kéo ngang nếu sơ đồ rộng
             </p>
           </div>
 
-          <MindMap />
+          <MindMap key={active.id} data={active.root} />
         </div>
       </Section>
 

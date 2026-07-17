@@ -1,16 +1,15 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { mindmapData } from "./mindmapData";
 
-// Kích thước layout
-const COL_W = [300, 260, 250, 320]; // bề rộng node theo từng cấp
-const COL_GAP = 70;
-const ROW_H = 76;
-const NODE_H = [110, 64, 56, 64];
+// Kích thước layout (mỗi mindmap giờ chỉ có 3 cấp: gốc → nhánh → chi tiết)
+const COL_W = [280, 250, 360];
+const COL_GAP = 80;
+const ROW_H = 78;
+const NODE_H = [110, 68, 62];
 
 const nodeX = (depth) => {
   let x = 0;
-  for (let d = 0; d < depth; d++) x += COL_W[d] + COL_GAP;
+  for (let d = 0; d < depth; d++) x += COL_W[Math.min(d, COL_W.length - 1)] + COL_GAP;
   return x;
 };
 
@@ -49,20 +48,16 @@ const flatten = (node, acc = []) => {
   return acc;
 };
 
-const nodeStyles = (depth) => {
-  switch (depth) {
-    case 0:
-      return "bg-brown text-beige border-2 border-ink shadow-hard rounded-2xl font-display font-bold text-base md:text-lg";
-    case 1:
-      return "bg-red-muted text-white border-2 border-ink shadow-hard rounded-2xl font-display font-bold text-base";
-    case 2:
-      return "bg-gold/90 text-ink border-2 border-ink shadow-hard-sm rounded-xl font-bold text-sm";
-    default:
-      return "bg-white text-brown border border-brown shadow-sm rounded-xl text-sm";
-  }
+// Kiểu node theo vai trò: gốc / nhánh / lá
+const nodeStyles = (n) => {
+  if (n.depth === 0)
+    return "bg-brown text-beige border-2 border-ink shadow-hard rounded-2xl font-display font-bold text-base md:text-lg";
+  if (n.hasChildren || n.depth === 1)
+    return "bg-red-muted text-white border-2 border-ink shadow-hard-sm rounded-2xl font-display font-bold text-sm md:text-base";
+  return "bg-white text-brown border border-brown shadow-sm rounded-xl text-sm";
 };
 
-const MindMap = () => {
+const MindMap = ({ data }) => {
   const [collapsed, setCollapsed] = useState(new Set());
 
   const toggle = (id) => {
@@ -75,20 +70,20 @@ const MindMap = () => {
   };
 
   const { nodes, width, height } = useMemo(() => {
-    const tree = layoutTree(mindmapData, collapsed);
+    const tree = layoutTree(data, collapsed);
     const all = flatten(tree);
     const maxDepth = Math.max(...all.map((n) => n.depth));
     const w = nodeX(maxDepth) + COL_W[Math.min(maxDepth, COL_W.length - 1)];
-    const h = Math.max(...all.map((n) => n.y)) + NODE_H[0] + 40;
+    const h = Math.max(...all.map((n) => n.y)) + NODE_H[0] + 20;
     return { nodes: all, width: w, height: h };
-  }, [collapsed]);
+  }, [data, collapsed]);
 
   const PAD = 24;
 
   return (
     <div className="w-full overflow-auto border-2 border-brown bg-paper shadow-hard-md rounded-2xl">
       <div
-        className="relative"
+        className="relative mx-auto"
         style={{ width: width + PAD * 2, height: height + PAD * 2 }}
       >
         {/* Đường nối */}
@@ -137,7 +132,7 @@ const MindMap = () => {
             }}
             transition={{ duration: 0.3 }}
             style={{ width: n.w, height: n.h, position: "absolute" }}
-            className={`flex items-center justify-center text-center px-3 py-2 leading-snug select-none ${nodeStyles(n.depth)} ${
+            className={`flex items-center justify-center text-center px-3 py-2 leading-snug select-none ${nodeStyles(n)} ${
               n.hasChildren ? "cursor-pointer hover:-translate-y-0.5 transition-transform" : ""
             }`}
             onClick={() => n.hasChildren && toggle(n.id)}
