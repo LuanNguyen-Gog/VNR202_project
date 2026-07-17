@@ -5,6 +5,7 @@ export const PAGE_ORDER = [
   { path: "/dai-hoi-x", label: "Đại hội X (2006)" },
   { path: "/dai-hoi-xi", label: "Đại hội XI (2011)" },
   { path: "/mindmap", label: "Mindmap tổng kết" },
+  { path: "/bao-tang", label: "Bảo tàng 3D" },
 ];
 
 export const getNeighbors = (path) => {
