@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { PointerLockControls, OrbitControls, useTexture, Html } from "@react-three/drei";
+import { PointerLockControls, OrbitControls, useTexture, Html, Text } from "@react-three/drei";
 import * as THREE from "three";
 import { exhibits, HALL } from "./museumData";
 
@@ -21,7 +21,32 @@ const slotTransform = (wall, slot, count) => {
   }
 };
 
-const Painting = ({ img, wall, slot, count }) => {
+const CAPTION_FONT = "/fonts/BeVietnamPro-Medium.ttf";
+
+// Bảng tên nhỏ gắn dưới tranh
+const Plaque = ({ title, y }) => (
+  <group position={[0, y, 0.02]}>
+    <mesh>
+      <boxGeometry args={[2.7, 0.52, 0.03]} />
+      <meshStandardMaterial color="#f0e2c4" roughness={0.8} />
+    </mesh>
+    <Text
+      font={CAPTION_FONT}
+      fontSize={0.095}
+      maxWidth={2.45}
+      lineHeight={1.3}
+      textAlign="center"
+      anchorX="center"
+      anchorY="middle"
+      position={[0, 0, 0.02]}
+      color="#5a4130"
+    >
+      {title}
+    </Text>
+  </group>
+);
+
+const Painting = ({ img, wall, slot, count, title }) => {
   const texture = useTexture(img);
   texture.colorSpace = THREE.SRGBColorSpace;
   const { pos, rotY } = slotTransform(wall, slot, count);
@@ -42,6 +67,8 @@ const Painting = ({ img, wall, slot, count }) => {
         <planeGeometry args={[W, H]} />
         <meshBasicMaterial map={texture} toneMapped={false} />
       </mesh>
+      {/* Bảng tên dưới tranh */}
+      {title && <Plaque title={title} y={-H / 2 - 0.42} />}
       {/* Đèn rọi tranh */}
       <pointLight position={[0, 1.8, 1.2]} intensity={6} distance={5} color="#ffe9c4" />
     </group>
