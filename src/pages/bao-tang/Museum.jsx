@@ -8,24 +8,27 @@ const WALK_SPEED = 5;
 const EYE_HEIGHT = 1.6;
 const MARGIN = 1.2; // cách tường tối thiểu
 
-// Vị trí & hướng của từng tranh theo tường
-const slotTransform = (wall, slot) => {
-  const zs = [-14, -8, -2, 4, 10];
+// Vị trí & hướng của từng tranh theo tường; tranh giãn đều theo số tranh trên tường đó
+const slotTransform = (wall, slot, count) => {
+  const z = count > 1 ? -14 + (24 / (count - 1)) * slot : -2;
   switch (wall) {
     case "left":
-      return { pos: [-HALL.width / 2 + 0.06, 2.2, zs[slot]], rotY: Math.PI / 2 };
+      return { pos: [-HALL.width / 2 + 0.06, 2.2, z], rotY: Math.PI / 2 };
     case "right":
-      return { pos: [HALL.width / 2 - 0.06, 2.2, zs[slot]], rotY: -Math.PI / 2 };
+      return { pos: [HALL.width / 2 - 0.06, 2.2, z], rotY: -Math.PI / 2 };
     default: // end wall
       return { pos: [slot === 0 ? -3 : 3, 2.3, -HALL.length / 2 + 0.06], rotY: 0 };
   }
 };
 
-const Painting = ({ img, wall, slot }) => {
+const Painting = ({ img, wall, slot, count }) => {
   const texture = useTexture(img);
-  const { pos, rotY } = slotTransform(wall, slot);
-  const W = 3.2;
-  const H = 2.4;
+  texture.colorSpace = THREE.SRGBColorSpace;
+  const { pos, rotY } = slotTransform(wall, slot, count);
+  // Co khung theo tỉ lệ ảnh thật, gói trong khổ tối đa 3.2 × 2.4
+  const aspect = texture.image ? texture.image.width / texture.image.height : 4 / 3;
+  const W = Math.min(3.2, 2.4 * aspect);
+  const H = W / aspect;
 
   return (
     <group position={pos} rotation-y={rotY}>
@@ -182,7 +185,11 @@ const Museum = ({ isTouch, onLockChange }) => {
       <Suspense fallback={<Loader />}>
         <Room />
         {exhibits.map((e) => (
-          <Painting key={e.id} {...e} />
+          <Painting
+            key={e.id}
+            {...e}
+            count={exhibits.filter((x) => x.wall === e.wall).length}
+          />
         ))}
       </Suspense>
 

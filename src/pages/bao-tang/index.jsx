@@ -37,8 +37,7 @@ const BaoTangPage = () => {
               </h1>
               <p className="text-brown/80 font-body text-sm">
                 Gian I (tường trái): Đại hội X • Gian II (tường phải): Đại hội
-                XI • Tường cuối: Kết luận. Hình ảnh đang là placeholder — sẽ
-                thay bằng ảnh tư liệu thật.
+                XI & Cương lĩnh 2011 • Tường cuối: Quan hệ đối ngoại.
               </p>
 
               {isTouch ? (
@@ -91,6 +90,21 @@ const BaoTangPage = () => {
           <div className="w-1.5 h-1.5 rounded-full bg-beige/80 shadow" />
         </div>
       )}
+
+      {/* Gợi ý thoát — nhỏ, mờ, ở đáy tầm nhìn */}
+      <AnimatePresence>
+        {locked && (
+          <motion.p
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ delay: 0.4 }}
+            className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 pointer-events-none font-mono text-[10px] uppercase tracking-widest text-beige/40 select-none"
+          >
+            Bấm ESC để vào hướng dẫn
+          </motion.p>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
